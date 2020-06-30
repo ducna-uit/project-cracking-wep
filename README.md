@@ -136,6 +136,20 @@ Sau đó dùng aircrack-ng để tìm key.
 Kết quả:  
 ![git](resource/hinh12.JPG)  
 
+#### Cracking WEP sử dụng Wifite
+Wifite là công cụ dùng để crack WEP, dò tìm mật khẩu WPA/WPA2 có sẵn trên Kali Linux. Với Wifite, chỉ cần thao tác dò tìm và chọn mục tiêu, tất cả sau đó đều tự động và cho ra kết quả.  
+Trên Terminal, ta gõ lệnh sau:
+>wifite --wep -i [interface]
+
+Quá trình scan các wifi xung quanh sử dụng bảo mật WEP diễn ra và ta có thể chọn mục tiêu cần bẻ khoá.  
+![git](resource/hinh19.JPG)  
+
+Sau khi chọn mục tiêu, quá trình deauthentication và tiêm các gói ARP diễn ra tự động cho đến khi thu thập đủ data cần thiết.  
+![git](resource/hinh20.JPG)  
+
+Kết quả:  
+![git](resource/hinh21.JPG)  
+
 #### Sử dụng công cụ Commview
 CommView for WiFi là phần mềm giám sát dữ liệu truyền tải qua mạng không dây chuẩn 802.11a/b/g. CommView sẽ thu thập dữ liệu từ các Adaptor wifi xung quanh. Hiển thị thông tin và phân tích chi tiết các giao thức phổ biến, giải mã thành lớp (layer) cơ bản nhất.
 ![git](resource/hinh13.JPG)  
