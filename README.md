@@ -84,7 +84,7 @@ Như trên hình ta tập trung thu thập dữ liệu từ Access Point có ESS
 Đã có client kết nối vào lại và airodump-ng bắt đầu thu thập IV. Tuy nhiên, quá trình này thu thập rất chậm. Để đẩy nhanh tiến độ, ta sẽ đến bước tiếp theo.
 
 **Bước 5:** Tăng tín hiệu ARP  
-Sử dụng ***aireplay-ng*** để tiêm các gói ARP. Quá trình tiêm các gói ARP (Injecting ARP Packets) nhằm buộc AP liên tục gửi đi các gói dữ liệu chứa khóa IV (Initialization Vector). Quá trình này có thể diễn ra tự động nhưng trên thực tế, nếu có Client đang kết nối và trao đổi dữ liệu với AP, tốc độ thu thập khóa IV càng nhanh nếu lượng dữ liệu trao đổi càng nhiều.
+Sử dụng ***aireplay-ng*** để tiêm các gói ARP. Quá trình tiêm các gói ARP (Injecting ARP Packets) nhằm buộc AP liên tục gửi đi các gói dữ liệu chứa khóa IV (Initialization Vector). Quá trình này có thể diễn ra tự động nhưng trên thực tế, nếu có Client đang kết nối và trao đổi dữ liệu với AP, tốc độ thu thập khóa IV càng nhanh nếu lượng dữ liệu trao đổi càng nhiều.  
 Mở Terminal khác và chạy lệnh sau:
 >aireplay-ng -3 -b [mã_bssid_của_AP] -h [bssid_của_client] [interface]
 
