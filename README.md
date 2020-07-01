@@ -48,6 +48,7 @@ iwconfig wlan0 mode monitor #Bật monitor mode
 ifconfig wlan0 up #Bật card mạng wlan0
 
 ![git](resource/hinh2.JPG)  
+
 Và kết quả là wireless card đã ở chế độ Monitor.
 ### Tiến hành bẻ khoá
 #### Cracking WEP đơn giản
@@ -56,6 +57,7 @@ Và kết quả là wireless card đã ở chế độ Monitor.
 > airodump-ng wlan0
 
 **Lưu ý:** *wlan0* là tên interface của wireless card, tên này có thể khác đối với từng phiên bản hệ điều hành nên cần hiệu chỉnh cho phù hợp.
+
 ![git](resource/hinh3.JPG)  
 Hiện tại, Adapter không dây ở chế độ Monitor mode nên lệnh này sẽ lấy tất cả thông tin Wifi xung quanh và hiển thị thông tin lên. Mục đích lệnh này là để ta chọn mục tiêu và lấy thông tin về mục tiêu đó. Ta chỉ cần quan tâm 2 cột là BSSID (địa chỉ MAC của thiết bị wifi) và CH (kênh của thiết bị wifi).
 
@@ -63,6 +65,7 @@ Hiện tại, Adapter không dây ở chế độ Monitor mode nên lệnh này 
 >airodump-ng --bssid [mã_bssid] -c [kênh] -w [đường_dẫn_lưu]/[đặt_tên] [interface]
 
 ![git](resource/hinh4.JPG)  
+
 Ở đây ta chọn:
 - F4:F2:6D:53:7E:BE là BSSID của AP
 - -c 1 là kênh mà AP đang hoạt động
@@ -82,6 +85,7 @@ Như trên hình ta tập trung thu thập dữ liệu từ Access Point có ESS
 - wlan0 là tên interface không dây
 
 **Bước 4:** Sau khi thực hiện bước 3, quay lại cửa sổ bước 2 và quan sát.
+
 ![git](resource/hinh6.JPG)  
 Đã có client kết nối vào lại và airodump-ng bắt đầu thu thập IV. Tuy nhiên, quá trình này thu thập rất chậm. Để đẩy nhanh tiến độ, ta sẽ đến bước tiếp theo.
 
@@ -109,21 +113,26 @@ Với khoảng 20.000 IVs thu thập được, ta đã có thể crack được 
 #### Cracking WEP sử dụng Kismet
 Tương tự cracking WEP đơn giản. Tuy nhiên ta sẽ tăng độ dài key lên thành 128 bit với mật khẩu là **W3p-ezc@cking**  
 **Bước 1:** Sửa file log của kismet để kismet xuất file thông tin bắt được dạng pcapng.
+
 ![git](resource/hinh15.JPG)  
 
 Sau đó, chạy lệnh sau:
 >kismet -c wlan0
 
 **Bước 2:** Ta sẽ vào browser với địa chỉ local và port 2501. Sau đó tạo tài khoản đăng nhập hệ thống.
+
 ![git](resource/hinh10.JPG)  
 
 **Bước 3:** Quan sát traffic mà kismet bắt được và chọn mục tiêu tấn công.
+
 ![git](resource/hinh16.JPG)  
 
 **Bước 4:** Chọn channel cố định ứng với mục tiêu cần bẻ khoá để bắt IVs nhanh hơn.
+
 ![git](resource/hinh17.JPG)  
 
 **Bước 5:** Quan sát số lượng data bắt được.
+
 ![git](resource/hinh18.JPG)  
 
 **Bước 6:** Để thu thập data nhanh hơn, ta sử dụng aireplay-ng như ở bước 5 phần crack WEP đơn giản.
@@ -136,6 +145,7 @@ Sau đó dùng aircrack-ng để tìm key.
 >aircrack-ng wepcracking-01.cap
 
 Kết quả:  
+
 ![git](resource/hinh12.JPG)  
 
 #### Cracking WEP sử dụng Wifite
@@ -144,21 +154,26 @@ Trên Terminal, ta gõ lệnh sau:
 >wifite --wep -i [interface]
 
 Quá trình scan các wifi xung quanh sử dụng bảo mật WEP diễn ra và ta có thể chọn mục tiêu cần bẻ khoá.  
+
 ![git](resource/hinh19.JPG)  
 
 Sau khi chọn mục tiêu, quá trình deauthentication và tiêm các gói ARP diễn ra tự động cho đến khi thu thập đủ data cần thiết.  
+
 ![git](resource/hinh20.JPG)  
 
 Kết quả:  
+
 ![git](resource/hinh21.JPG)  
 
 #### Cracking WEP sử dụng Commview
 CommView for WiFi là phần mềm giám sát dữ liệu truyền tải qua mạng không dây chuẩn 802.11a/b/g. CommView sẽ thu thập dữ liệu từ các Adaptor wifi xung quanh. Hiển thị thông tin và phân tích chi tiết các giao thức phổ biến, giải mã thành lớp (layer) cơ bản nhất.
+
 ![git](resource/hinh13.JPG)  
 
 Quan sát màn hình chính của Commview khi quét ta thấy được những traffic không dây xung quanh, các thông tin Mac Address, Channel, SSID, Standard, Encryption, etc. Ngoài ra, còn biết được những client nào đã kết nối tới AP đó.
 
 Một số đồ thị cho biết lưu lượng dữ liệu, mức tín hiệu, biên độ của các mạng 2.4 GHz và 5.0 GHz.  
+
 ![git](resource/hinh14.JPG)  
 
 Ngoài ra phần mềm còn quản lí các kết nối, xem số lượng các packet, băng thông, quản lí gói dữ liệu cá nhân. Qua đó cho thấy phần mềm sẽ hữu dụng cho quản trị viên mạng Lan, chuyên gia bảo mật hoặc những ai muốn giám sát mạng cá nhân của họ. Tuy nhiên phần mềm yêu cầu 1 Adaptor Wireless tương thích.
