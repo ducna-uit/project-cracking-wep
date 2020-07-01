@@ -32,6 +32,7 @@ Máy thật. Cấu hình:
 - Hard Disk 500 GB SSD
 ### Access Point
 Thiết lập phương thức bảo mật WEP và chọn key cho Access Point
+
 ![git](resource/hinh1.JPG)
 
 ## Cracking WEP
