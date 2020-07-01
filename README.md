@@ -7,6 +7,7 @@ Trong dự án cuối kì, ta sử dụng một số công cụ crack WEP phổ 
   * Aircrack-ng - ARP giả mạo / tiêm bằng cách sử dụng aireplay-ng
   * Kismet - Network Sniffer, cũng có thể lấy IV
   * Airodump - GrabbingIVs
+  * Wifite - Phần mềm crack WEP trong Kali Linux.
   * Commview - Bắt các gói trong Windows
 
 Môi trường thực hành dự án này tuỳ theo OS có hỗ trợ tool đó hay không. Cụ thể:
