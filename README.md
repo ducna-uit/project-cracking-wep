@@ -41,7 +41,7 @@ Việc đầu tiên cần làm là khởi động chế độ giám sát (monito
 sudo modprobe 8188eu
 
 Sau đó, thực hiện các câu lệnh tiếp theo:
-> #ifconfig wlan0 down #Tắt card mạng wlan0  
+>ifconfig wlan0 down #Tắt card mạng wlan0  
 airmon-ng check kill #Tắt hết các tiến trình đang sử dụng card wifi  
 iwconfig wlan0 mode monitor #Bật monitor mode  
 ifconfig wlan0 up #Bật card mạng wlan0
