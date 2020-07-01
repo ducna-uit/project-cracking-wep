@@ -150,7 +150,7 @@ Sau khi chọn mục tiêu, quá trình deauthentication và tiêm các gói ARP
 Kết quả:  
 ![git](resource/hinh21.JPG)  
 
-#### Sử dụng công cụ Commview
+#### Cracking WEP sử dụng Commview
 CommView for WiFi là phần mềm giám sát dữ liệu truyền tải qua mạng không dây chuẩn 802.11a/b/g. CommView sẽ thu thập dữ liệu từ các Adaptor wifi xung quanh. Hiển thị thông tin và phân tích chi tiết các giao thức phổ biến, giải mã thành lớp (layer) cơ bản nhất.
 ![git](resource/hinh13.JPG)  
 
@@ -160,3 +160,14 @@ Một số đồ thị cho biết lưu lượng dữ liệu, mức tín hiệu, 
 ![git](resource/hinh14.JPG)  
 
 Ngoài ra phần mềm còn quản lí các kết nối, xem số lượng các packet, băng thông, quản lí gói dữ liệu cá nhân. Qua đó cho thấy phần mềm sẽ hữu dụng cho quản trị viên mạng Lan, chuyên gia bảo mật hoặc những ai muốn giám sát mạng cá nhân của họ. Tuy nhiên phần mềm yêu cầu 1 Adaptor Wireless tương thích.
+
+**Bước 1:** Chọn mục tiêu và chờ bắt dữ liệu.
+
+**Bước 2:** Tiêm các gói ARP để bắt các IVs nhanh hơn.
+
+**Bước 3:** Export các log thành file pcapng
+
+**Bước 4:** Chuyển file pcapng thành pcap để aircrack-ng đọc được
+>tshark -F pcap -r inputfile -w outputfile
+
+Sau đó dùng aircrack-ng để tìm key.
